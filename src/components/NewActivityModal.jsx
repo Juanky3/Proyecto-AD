@@ -59,7 +59,11 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
             </div>
             <button
               onClick={onClose}
+<<<<<<< HEAD
               className="p-1 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition cursor-pointer"
+=======
+              className="p-1 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
             >
               <X size={20} />
             </button>
@@ -76,7 +80,11 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                 placeholder="Ej. Integración de API REST"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+<<<<<<< HEAD
                 className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+=======
+                className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
               />
             </div>
 
@@ -88,10 +96,17 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                 <select
                   value={formData.responsible}
                   onChange={(e) => setFormData({ ...formData, responsible: e.target.value })}
+<<<<<<< HEAD
                   className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white"
                 >
                   {members.map((m) => (
                     <option key={m} value={m} className="text-slate-900">
+=======
+                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white"
+                >
+                  {members.map((m) => (
+                    <option key={m} value={m}>
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
                       {m}
                     </option>
                   ))}
@@ -109,7 +124,11 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                   required
                   value={formData.hours}
                   onChange={(e) => setFormData({ ...formData, hours: Number(e.target.value) })}
+<<<<<<< HEAD
                   className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+=======
+                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
                 />
                 <span className="text-[10px] text-slate-400">Recomendado: 1 a 6 horas</span>
               </div>
@@ -124,7 +143,11 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                   type="date"
                   value={formData.startDate}
                   onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
+<<<<<<< HEAD
                   className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+=======
+                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
                 />
               </div>
 
@@ -137,7 +160,11 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                   required
                   value={formData.deadline}
                   onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
+<<<<<<< HEAD
                   className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+=======
+                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
                 />
               </div>
             </div>
@@ -146,13 +173,21 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
               <button
                 type="button"
                 onClick={onClose}
+<<<<<<< HEAD
                 className="px-4 py-2.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition cursor-pointer"
+=======
+                className="px-4 py-2.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition"
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
               >
                 Cancelar
               </button>
               <button
                 type="submit"
+<<<<<<< HEAD
                 className="px-5 py-2.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition cursor-pointer"
+=======
+                className="px-5 py-2.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition"
+>>>>>>> a3dae4172650715580a64640bc706d86b870adde
               >
                 Crear Actividad
               </button>
