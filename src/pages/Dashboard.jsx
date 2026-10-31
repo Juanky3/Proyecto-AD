@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import StatusBadge from '../components/StatusBadge';
@@ -6,7 +6,7 @@ import ObservationModal from '../components/ObservationModal';
 import NewActivityModal from '../components/NewActivityModal';
 import HistoryDrawer from '../components/HistoryDrawer';
 import TeamManagementModal from '../components/TeamManagementModal';
-import { Plus, Clock, Users, Calendar, History, Sparkles, Filter, UserCog } from 'lucide-react';
+import { Plus, Clock, Users, Calendar, History, Sparkles, Filter, UserCog, Trash2 } from 'lucide-react';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -26,64 +26,80 @@ export default function Dashboard() {
     { name: 'Legner Yaguana', email: 'legner.yaguana@sgi.com', role: 'Integrante', initials: 'LY', color: 'bg-rose-500' },
   ]);
 
-  const [activities, setActivities] = useState([
-    {
-      id: 1,
-      title: 'Análisis de requisitos y casos de uso',
-      responsible: 'Anderson Iza',
-      hours: 4,
-      startDate: '2026-10-15',
-      deadline: '2026-11-05',
-      status: 'Completada',
-      observation: '',
-      history: [
-        { previousStatus: '-', newStatus: 'Pendiente', user: 'Anderson Iza', date: '15/10/2026, 09:00', observation: 'Creación' },
-        { previousStatus: 'Pendiente', newStatus: 'Completada', user: 'Anderson Iza', date: '20/10/2026, 17:30', observation: 'Requisitos listos' },
-      ],
-    },
-    {
-      id: 2,
-      title: 'Diseño de modelos de datos y API',
-      responsible: 'Legner Yaguana',
-      hours: 6,
-      startDate: '2026-10-18',
-      deadline: '2026-11-12',
-      status: 'Completada',
-      observation: '',
-      history: [
-        { previousStatus: '-', newStatus: 'Pendiente', user: 'Legner Yaguana', date: '18/10/2026, 10:00', observation: 'Creación' },
-        { previousStatus: 'Pendiente', newStatus: 'Completada', user: 'Legner Yaguana', date: '24/10/2026, 11:15', observation: 'Endpoints listos' },
-      ],
-    },
-    {
-      id: 3,
-      title: 'Bocetos y maquetación de interfaz web',
-      responsible: 'Juan Toaso',
-      hours: 5,
-      startDate: '',
-      deadline: '2026-10-20',
-      status: 'Completada',
-      observation: '',
-      history: [
-        { previousStatus: '-', newStatus: 'Pendiente', user: 'Juan Toaso', date: '19/10/2026, 08:30', observation: 'Creación' },
-        { previousStatus: 'Pendiente', newStatus: 'Completada', user: 'Juan Toaso', date: '25/10/2026, 15:45', observation: 'Mockups y componentes listos' },
-      ],
-    },
-    {
-      id: 4,
-      title: 'Configuración inicial del repositorio',
-      responsible: 'Gabriel Pantoja',
-      hours: 2,
-      startDate: '',
-      deadline: '2026-10-25',
-      status: 'No realizada',
-      observation: 'Falta de permisos en la organización',
-      history: [
-        { previousStatus: '-', newStatus: 'Pendiente', user: 'Gabriel Pantoja', date: '20/10/2026, 14:00', observation: 'Creación' },
-        { previousStatus: 'Pendiente', newStatus: 'No realizada', user: 'Gabriel Pantoja', date: '25/10/2026, 18:00', observation: 'Falta de permisos en la organización' },
-      ],
-    },
-  ]);
+  // Cargar actividades desde localStorage o usar las iniciales
+  const [activities, setActivities] = useState(() => {
+    const saved = localStorage.getItem('sgi_activities');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error("Error al cargar localStorage:", e);
+      }
+    }
+    return [
+      {
+        id: 1,
+        title: 'Análisis de requisitos y casos de uso',
+        responsible: 'Anderson Iza',
+        hours: 4,
+        startDate: '2026-10-15',
+        deadline: '2026-11-05',
+        status: 'Completada',
+        observation: '',
+        history: [
+          { previousStatus: '-', newStatus: 'Pendiente', user: 'Anderson Iza', date: '15/10/2026, 09:00', observation: 'Creación' },
+          { previousStatus: 'Pendiente', newStatus: 'Completada', user: 'Anderson Iza', date: '20/10/2026, 17:30', observation: 'Requisitos listos' },
+        ],
+      },
+      {
+        id: 2,
+        title: 'Diseño de modelos de datos y API',
+        responsible: 'Legner Yaguana',
+        hours: 6,
+        startDate: '2026-10-18',
+        deadline: '2026-11-12',
+        status: 'Completada',
+        observation: '',
+        history: [
+          { previousStatus: '-', newStatus: 'Pendiente', user: 'Legner Yaguana', date: '18/10/2026, 10:00', observation: 'Creación' },
+          { previousStatus: 'Pendiente', newStatus: 'Completada', user: 'Legner Yaguana', date: '24/10/2026, 11:15', observation: 'Endpoints listos' },
+        ],
+      },
+      {
+        id: 3,
+        title: 'Bocetos y maquetación de interfaz web',
+        responsible: 'Juan Toaso',
+        hours: 5,
+        startDate: '',
+        deadline: '2026-10-20',
+        status: 'Completada',
+        observation: '',
+        history: [
+          { previousStatus: '-', newStatus: 'Pendiente', user: 'Juan Toaso', date: '19/10/2026, 08:30', observation: 'Creación' },
+          { previousStatus: 'Pendiente', newStatus: 'Completada', user: 'Juan Toaso', date: '25/10/2026, 15:45', observation: 'Mockups y componentes listos' },
+        ],
+      },
+      {
+        id: 4,
+        title: 'Configuración inicial del repositorio',
+        responsible: 'Gabriel Pantoja',
+        hours: 2,
+        startDate: '',
+        deadline: '2026-10-25',
+        status: 'No realizada',
+        observation: 'Falta de permisos en la organización',
+        history: [
+          { previousStatus: '-', newStatus: 'Pendiente', user: 'Gabriel Pantoja', date: '20/10/2026, 14:00', observation: 'Creación' },
+          { previousStatus: 'Pendiente', newStatus: 'No realizada', user: 'Gabriel Pantoja', date: '25/10/2026, 18:00', observation: 'Falta de permisos en la organización' },
+        ],
+      },
+    ];
+  });
+
+  // Guardar automáticamente en localStorage cuando se cree, borre o edite una actividad
+  useEffect(() => {
+    localStorage.setItem('sgi_activities', JSON.stringify(activities));
+  }, [activities]);
 
   const [activeFilter, setActiveFilter] = useState('Todas');
   const [isObservationModalOpen, setIsObservationModalOpen] = useState(false);
@@ -159,6 +175,13 @@ export default function Dashboard() {
 
   const handleAddActivity = (newAct) => {
     setActivities((prev) => [newAct, ...prev]);
+  };
+
+  // Borrar actividad
+  const handleDeleteActivity = (id) => {
+    if (window.confirm('¿Estás seguro de que deseas eliminar esta actividad?')) {
+      setActivities((prev) => prev.filter((act) => act.id !== id));
+    }
   };
 
   const filteredActivities = activities.filter((act) => {
@@ -366,6 +389,17 @@ export default function Dashboard() {
                     >
                       <History size={17} />
                     </button>
+
+                    {/* Botón Eliminar (Solo para Líder) */}
+                    {isLeader && (
+                      <button
+                        onClick={() => handleDeleteActivity(act.id)}
+                        title="Eliminar actividad"
+                        className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition cursor-pointer"
+                      >
+                        <Trash2 size={17} />
+                      </button>
+                    )}
                   </div>
                 </motion.div>
               ))

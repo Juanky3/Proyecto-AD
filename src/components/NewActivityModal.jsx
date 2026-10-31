@@ -59,7 +59,7 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
             </div>
             <button
               onClick={onClose}
-              className="p-1 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
+              className="p-1 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition cursor-pointer"
             >
               <X size={20} />
             </button>
@@ -76,7 +76,7 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                 placeholder="Ej. Integración de API REST"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               />
             </div>
 
@@ -88,10 +88,10 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                 <select
                   value={formData.responsible}
                   onChange={(e) => setFormData({ ...formData, responsible: e.target.value })}
-                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white"
+                  className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white"
                 >
                   {members.map((m) => (
-                    <option key={m} value={m}>
+                    <option key={m} value={m} className="text-slate-900">
                       {m}
                     </option>
                   ))}
@@ -109,7 +109,7 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                   required
                   value={formData.hours}
                   onChange={(e) => setFormData({ ...formData, hours: Number(e.target.value) })}
-                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
                 <span className="text-[10px] text-slate-400">Recomendado: 1 a 6 horas</span>
               </div>
@@ -124,7 +124,7 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                   type="date"
                   value={formData.startDate}
                   onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
 
@@ -137,7 +137,7 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
                   required
                   value={formData.deadline}
                   onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-                  className="w-full text-sm p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full text-sm text-slate-900 p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -146,13 +146,13 @@ export default function NewActivityModal({ isOpen, onClose, onAdd, members }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition"
+                className="px-4 py-2.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition cursor-pointer"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="px-5 py-2.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition"
+                className="px-5 py-2.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md transition cursor-pointer"
               >
                 Crear Actividad
               </button>

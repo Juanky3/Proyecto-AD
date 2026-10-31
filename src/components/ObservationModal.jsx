@@ -37,7 +37,7 @@ export default function ObservationModal({ isOpen, onClose, onConfirm }) {
               value={observation}
               onChange={(e) => setObservation(e.target.value)}
               placeholder="Describa el motivo..."
-              className="w-full p-3 text-sm border border-slate-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:outline-none"
+              className="w-full text-sm text-slate-900 bg-white p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             />
             <div className="flex justify-end gap-2">
               <button
